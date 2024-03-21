@@ -22,7 +22,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ProductQuantityUpdateRequestBody"
+              $ref: "#/components/requestBodies/ProductQuantityUpdateRequestBody"
       responses:
         "200":
           description: Product quantity updated in the cart.

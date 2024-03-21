@@ -17,12 +17,6 @@ paths:
           description: Product Id.
           schema:
             type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/requestBodies/ProductInCartRequestBody"
       responses:
         "200":
           description: Product added to cart.

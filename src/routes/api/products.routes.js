@@ -7,6 +7,7 @@ import {
   deleteProductController,
   generateMockProductsController,
   getProductsFromUserController,
+  getUnlimitedProductsController,
 } from "../../controllers/productsControllers.js";
 import { authorization } from "../../utils/auth.js";
 import { passportCall } from "../../utils/passport.js";
@@ -23,6 +24,14 @@ ProductRouter.get(
   passportCall("jwt"),
   authorization("admin"),
   getProductsController
+);
+
+//Get unlimited products (no pagination)
+ProductRouter.get(
+  "/getAllProducts",
+  passportCall("jwt"),
+  authorization("admin"),
+  getUnlimitedProductsController
 );
 
 //Get products from Premium User

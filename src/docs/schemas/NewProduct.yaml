@@ -35,7 +35,6 @@ components:
           type: String
           description: Product owner (Default admin)
       example:
-        _id: "65fab25cea30d304fa6863c1"
         title: Luxurious Granite Sausages
         description: Carbonite web goalkeeper gloves are ergonomically designed to give easy fit
         code: 978-0-7325-7717-9

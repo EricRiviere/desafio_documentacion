@@ -59,7 +59,7 @@ CartsRouter.put(
 CartsRouter.put(
   "/:cid/products/:pid",
   passportCall("jwt"),
-  authorization(["user", "premium"]),
+  authorization(["user", "premium", "admin"]),
   putProductQuantityInCartController
 );
 
@@ -75,7 +75,7 @@ CartsRouter.delete(
 CartsRouter.delete(
   "/:cid/products/:pid",
   passportCall("jwt"),
-  authorization(["user", "premium"]),
+  authorization(["user", "premium", "admin"]),
   deleteProductFromCartController
 );
 

@@ -29,4 +29,5 @@ export default {
   gmailAccount: process.env.GMAIL_ACCOUNT,
   gmailAppPassword: process.env.GMAIL_APP_PASSWD,
   resetPasswordKey: process.env.RESET_PASSWORD_KEY,
+  adminEmail: process.env.ADMIN_EMAIL,
 };

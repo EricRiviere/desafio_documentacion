@@ -4,6 +4,7 @@ import { generateProductErrorInfo } from "../services/errors/messages/product-cr
 import { productsService } from "../services/service.js";
 import { generateProducts } from "../utils/fakeProducts.js";
 import logger from "../utils/logger.js";
+import config from "../config/config.js";
 
 export const generateMockProductsController = async (req, res) => {
   try {
@@ -18,6 +19,15 @@ export const getProductsController = async (req, res) => {
   const { limit, page, sort } = req.query;
   try {
     let products = await productsService.getAll(limit, page, sort);
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getUnlimitedProductsController = async (req, res) => {
+  try {
+    let products = await productsService.getNoLimitProducts();
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -87,7 +97,7 @@ export const putProductController = async (req, res) => {
   const productCreator = req.user;
   try {
     if (
-      productCreator.email !== "adminCoder@coder.com" &&
+      productCreator.email !== config.adminEmail &&
       product.owner !== productCreator.email
     ) {
       throw new Error("Not authorized to update product");
@@ -107,7 +117,7 @@ export const deleteProductController = async (req, res) => {
     let product = await productsService.getOne(pid);
     if (!product) return res.status(404).send("No product found");
     if (
-      productCreator.email !== "adminCoder@coder.com" &&
+      productCreator.email !== config.adminEmail &&
       product.owner !== productCreator.email
     ) {
       throw new Error("Not authorized to delete product");

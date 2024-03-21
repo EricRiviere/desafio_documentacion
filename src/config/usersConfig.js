@@ -88,7 +88,7 @@ const initializePassport = () => {
           }
           //Admin role validation
           let role;
-          if (email === "adminCoder@coder.com") {
+          if (email === config.adminEmail) {
             role = "admin";
           }
           const newUser = {

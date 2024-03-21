@@ -37,6 +37,9 @@ components:
           - productId: "65f09c28320b0e9faff3b3b6"
             quantity: 1
 
+    EmptyCart:
+      type: object
+
   requestBodies:
     CartRequestBody:
       content:
@@ -49,6 +52,14 @@ components:
         products:
           - productId: "65f09c28320b0e9faff3b3b6"
             quantity: 1
+
+    EmptyCartRequestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "#components/shcemas/EmptyCart"
+      required: true
+      example: {}
 
     CartProductRequestBody:
       content:
@@ -79,13 +90,11 @@ components:
               $ref: "#/components/schemas/CartProductUpdate"
       required: true
       description: Data of products to update in the cart.
-      examples:
-        example1:
-          value:
-            - productId: "65f09c28320b0e9faff3b3b6"
-              quantity: 2
-            - productId: "65f09c28320b0e9faff3b3b7"
-              quantity: 3
+      example:
+        - productId: "65f09c28320b0e9faff3b3b6"
+          quantity: 2
+        - productId: "65f09c28320b0e9faff3b3b7"
+          quantity: 3
 
     ProductQuantityUpdateRequestBody:
       content:
@@ -100,7 +109,5 @@ components:
               - quantity
       required: true
       description: New quantity of the product to update in the cart.
-      examples:
-        example1:
-          value:
-            quantity: 5
+      example:
+        quantity: 5

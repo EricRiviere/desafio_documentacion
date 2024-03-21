@@ -1,22 +1,29 @@
 paths:
-  /api/carts/:
+  /api/carts/{uid}:
     post:
       summary: Post cart in DB
       tags:
         - Carts
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: User Id.
+          schema:
+            type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#components/requestBodies/CartRequestBody"
+              $ref: "#components/requestBodies/EmptyCartRequestBody"
       responses:
         "200":
           description: Cart successfully created.
           content:
             application/json:
               schema:
-                $ref: "#components/schemas/Cart"
+                $ref: "#components/schemas/EmptyCart"
         "401":
           description: Not authorized to consume resource.
         "400":

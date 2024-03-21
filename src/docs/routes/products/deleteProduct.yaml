@@ -1,5 +1,5 @@
 paths:
-  /api/product/{pid}:
+  /api/products/{pid}:
     delete:
       summary: Delete product from DB
       tags:
@@ -22,6 +22,8 @@ paths:
                   $ref: "#components/schemas/Product"
         "401":
           description: Not authorized to consume resourse.
+        "404":
+          description: Product not found.
         "500":
           description: Server internal error.
       security:

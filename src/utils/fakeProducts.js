@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import config from "../config/config.js";
 
 export const generateProducts = () => {
   let products = [];
@@ -23,6 +24,6 @@ export const generateProduct = () => {
       faker.image.urlPicsumPhotos({ width: 500, height: 500 }),
       faker.image.urlPicsumPhotos({ width: 500, height: 500 }),
     ],
-    owner: "adminCoder@coder.com",
+    owner: config.adminEmail,
   };
 };
